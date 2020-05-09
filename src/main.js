@@ -1,29 +1,14 @@
-//console.log('我是index.js')
+import Vue from 'vue';
+import App from './App.vue'
+import router from './router/index.js'
 
-//let tools = require('./untils/tools');
-
-
-//ES6模块化
-
-import tools from './untils/tools'
-//引入css
-import './style/test.css'
+import store from './store/index.js'
 
 
-var result1 = tools.sum(120, 180)
-//var result2 = tools.jian(100, 20)
 
-
-//console.log('求和的结果：',result1)
-//console.log('减的结果：',result2)
-
-//将值输出到页面上
-
-function createElement(htmlstr) {
-
-    var odiv = document.createElement('div');
-    odiv.innerHTML = htmlstr;
-    return odiv;
-}
-
-document.body.appendChild(createElement(result1));
+new Vue({
+    el: '#app',
+    router,
+    store,
+    render:(h)=>h(App)
+});

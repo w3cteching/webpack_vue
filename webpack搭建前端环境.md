@@ -34,9 +34,12 @@
 
     检测是否安装成功：
 
-        ./node_modules/.bin/webpack -v
+     1.   ./node_modules/.bin/webpack -v
         通过package.json中的scripts脚本来测试   
         http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html
+
+     2.检测： npm run build
+
 
     4.在项目根目录下创建一个src，并建立一个index.js
 
@@ -57,6 +60,16 @@
     6.如果手动配置，必须要创建webpack配置文件，来执行
 
        默认webpack配置文件：webpack.config.js
+
+    如果运行指定的配置文件，而不是默认的webpack.config.js，则在通过scripts运行时添加--config
+
+    例如： 
+    
+    "scripts": {
+
+      "build": "webpack --config webpack.dev.config.js",
+      "dev": "webpack-dev-server"
+   }
 
        黄色警告如何解决：通过配置mode
        如何自动清理打包的垃圾文件：
@@ -108,8 +121,6 @@
             }),
         ]
             
-
-    
      
 
     说明：webpack可以将node服务端的JS代码通过构建直接运行在浏览器上
@@ -122,6 +133,155 @@
     loader：让webpack识别其他类型的文件，例如：css,png,svg,less,sass.....
 
      识别css:style-loader,css-loader
+
+
+   webpack与vue集成？react
+
+
+   ==========录音复盘==========
+
+   1.自我介绍
+
+      基本信息，专业，工作经验，擅长技术（带有引导）
+
+   2.团队成员
+
+   3.项目开发流程
+
+     需求调研--项目立项--开讨论会（UI,前端，后端，测试，产品）--UE(原型,交互)--UI(设计图)--前端（1-2）--后端（4，5）--测试（2个）
+
+     ---部署---上线
+
+     axpure
+
+    问题：你们的数据交互用的是什么？？？
+
+    问题：你们的sdk跟手机的通讯用的是什么？
+
+        经验：不会的，可以反问一下面试官！！！
+
+    问题：xxx项目有多少个页面？
+
+       可以不用正面回答，但可以说一下自己负责的哪些功能
+
+    问题：你们多方开发，怎么保证代码的一致性？
+
+    问题：你们用什么做版本控制？？
+
+    问题：你们用gelap吗？  答：galap????  gulp!
+
+    问题：移动端，你们用什么JS框架？
+
+    问题：你们用过一些开源的东西吗
+
+    angular,vue
+
+    你们写样式表时，用less或sass吗
+
+    问题：
+    
+       开始问的是你们平时会封装一些组件吗？  
+
+       你平时用的什么插件多点吗
+
+    问题：Framework7你用过吗？mui?
+
+
+    =================================
+
+    问题：通过package.json的scripts属性运行npm包
+
+     "scripts": {
+         "build": "webpack",
+         "dev": "webpack-dev-server"
+       },
+
+
+    npm run scripts的属性名
+
+   问题二：运行npm特别慢，那就改一下npm镜像
+
+
+      npm config set registry https://registry.npm.taobao.org
+
+    查看修改的配置：npm config list
+
+
+    webpack如何指定多入口：通过给entry添加对象形式配置多入口
+
+   entry: {
+        "index": "./src/main.js",
+        "home":"./src/home.js"
+    },
+    output: {
+        //设置项目的输出目录
+        path: path.resolve(__dirname, "dist"),
+        //输出的文件名
+        filename: "[name]_[hash:8].js" //chunk
+    },
+
+    webpack识别less:
+
+       npm install less less-loader -D
+
+
+    webpack识别sass:
+
+       npm install sass-loader node-sass -D
+
+
+      sass常用教程：https://www.cnblogs.com/chyingp/p/sass-basic.html
+
+   webpack识别图片或其他文件
+
+      npm install url-loader -D
+
+   
+   集成vue:
+
+     安装ES6的包：babel  
+
+       1.npm install --save-dev babel-loader @babel/core @babel/preset-env
+       2.配置webpack
+
+        { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+
+
+       3.在项目根目录下创建.babelrc配置文件
+
+         {
+               "presets": ["@babel/preset-env"]
+         }
+
+
+     安装vue包：vue-loader,vue-template-compliler
+
+```
+     You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file.
+
+```
+
+    配置vue插件并在plugin中实例化插件：
+    
+       const VueLoaderPlugin = require('vue-loader/lib/plugin');
+
+       plugins: [
+        ...
+        //实例化vue插件
+        new VueLoaderPlugin()
+    ],
+
+   
+
+   
+
+
+
+      
+
+
+
+
 
 
 
