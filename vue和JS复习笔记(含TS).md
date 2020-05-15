@@ -839,9 +839,93 @@ typescript是javaScript的一个超集，比JS多了类型静态检查功能
     let t: any = 10;
     t = 'hello'
     t = true;
+    
     ```
 
-    
+
+    ```
+    //接口
+    interface userInfo{
+      readonly  name: string;  //设置属性为只读
+        age: number,
+        address: string,
+        xueli?:string  //问号代表该属性添加与否都可以
+    }
+    ```
+
+
+
+
+
+   - 经典面试题解析
+
+     1. 面试题一
+
+         ```
+         function Foo() {
+           var  getName = function () { alert(1) }
+             return this;  //window
+         }
+         
+         //特权方法
+         Foo.getName = function () { alert(2) }
+         
+         Foo.prototype.getName = function () { alert(3) }
+         var getName = function () {  alert(4)}
+         function getName() { alert(5) }
+         
+         //第一个运行结果：
+         Foo.getName();  //2
+         getName()  //4
+         Foo().getName(); //1
+         getName(); //1
+         new Foo.getName(); // 2
+         new Foo().getName();  //3
+         
+         new new Foo().getName(); //3
+         
+         /**
+          * 主要考察的技术点：
+          * 1.作用域链
+          * 2.函数的特权方法：函数名.变量名=function (name) ()
+          * 3.原型链
+          * 4.函数创建的两种方式的区别
+          * 5.this指向的知识
+          * 6.普通函数与new 实例化调用函数的区别
+          */
+         
+         
+         ```
+
+     2. 经典面试题二
+
+         ```
+         async function async1() {
+             console.log('async1 start');
+             await async2();
+             console.log('async1 end');
+         }
+         async function async2() {
+             console.log('async2');
+         }
+         console.log('script start');
+         setTimeout(function() {
+             console.log('setTimeout');
+         }, 0)
+         async1();
+         new Promise(function(resolve) {
+             console.log('promise1');
+             resolve();
+         }).then(function() {
+             console.log('promise2');
+         });
+         console.log('script end');
+         ```
+
+​     
+
+
+​     
 
 
 

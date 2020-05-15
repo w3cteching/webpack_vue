@@ -58,10 +58,10 @@ enum price {
 }
 
 //使用userRole来定义枚举变量
-let user1: userRole = userRole.guest;
+//let user1: userRole = userRole.guest;
 
 console.log('userRole:',userRole)
-console.log('user1:', user1);
+//console.log('user1:', user1);
 
 //any定义变量为任意类型
 let t: any = 10;
@@ -70,14 +70,36 @@ t = 'hello'
 t = true;
 
 
-// void
+// void，表示不返回数据类型
 
 function warnUser(x:number,y:number): void {
    // console.log("This is my warning message");
     let sum= x + y;
 }
 
-warnUser(10,20);
+warnUser(10, 20);
+
+//接口
+
+interface userInfo{
+   readonly name: string;
+    age: number,
+    address: string,
+    xueli?:string
+}
+
+function getUserInfo(u:userInfo) {
+   // u.name='李四'
+    console.log(`用户名${u.name}，年龄${u.age}，地址${u.address}`)
+
+}
+
+//鸭式辨型法
+
+let user1 = {name:'张三',age:20,address:'北京'}
+
+getUserInfo(user1);
+
 
 
 
