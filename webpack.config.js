@@ -4,11 +4,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 
+
 const config = {
     //指定模式：production-生产环境，development:开发环境
     mode: "development",
     //项目的入口文件
-    entry: "./src/main.js",
+    entry: "./src/main.ts",
     output: {
         //设置项目的输出目录
         path: path.resolve(__dirname, "dist"),
@@ -25,9 +26,13 @@ const config = {
             { test: /\.(sass|scss)$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
             { test: /\.(jpg|jpeg|png|gif)$/, use: ['url-loader'] },
             { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
-            { test: /\.vue$/, loader: 'vue-loader' }
+            { test: /\.vue$/, loader: 'vue-loader' },
+            {test:/\.ts$/,exclude: /node_modules/,use:['ts-loader']}
         ]
 
+    },
+    resolve: {
+        extensions:['.js','.ts']
     },
     plugins: [
         //添加文件清理的插件

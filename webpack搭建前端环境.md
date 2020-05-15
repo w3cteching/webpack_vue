@@ -271,6 +271,120 @@
         new VueLoaderPlugin()
     ],
 
+
+    集成vue路由:
+      
+       正常安装vue-router:
+          npm intall vue-router
+
+       添加router目录-->index.js
+
+            import Vue from 'vue';
+            import VueRouter from 'vue-router';
+
+            Vue.use(VueRouter);
+
+            //导入组件
+            import Home from '../pages/home.vue'
+            import About from '../pages/about.vue'
+
+            //配置路由
+            const routes = [
+               {path:'/',redirect: '/home'},
+               {path:'/home',component:Home,name:'home'},
+               {path:'/about',component:About,name:'about'},
+
+            ]
+
+
+            //实例化路由
+            const router = new VueRouter({
+               routes
+            })
+
+
+         //导出路由
+
+         export default router;
+
+
+       正常引入到main.js
+
+         import Vue from 'vue';
+         import App from './App.vue'
+         import router from './router/index.js'
+
+
+
+         new Vue({
+            el: '#app',
+            router,
+            render:(h)=>h(App)
+         });
+
+
+
+    集成vuex:
+
+
+    图标使用：
+
+
+    背影图
+
+    雪碧图：多张图片全成一张，通过背景定位实现
+
+    字体图标：
+
+
+    base64:
+
+    svg
+
+    你现在使用的IDE是什么？编辑器
+
+     vs code,submlime,brackets,webstorm,hbuilder,atom（github搞的）
+
+     webstorm,vs code[推荐]
+
+     chrome,IE（edge）,firefox,safari,国产浏览器
+
+     静态资源打包后放在什么位置？？？
+
+     模块化开发？ AMD,CMD,CommonJS,ES6 Mudles
+
+     你工作的时间是怎么安排？  996
+
+     你用过Hbuilder? 
+
+     eclipse 写java代码
+
+     UI（设计ui图）,FE(前端),BE（后端）,QA（测试）,UE（出产品原型图的）
+
+
+    ceo（首席执行官）,cto（首席技术官）,cfo(首席财富官)
+
+
+    你们写注释用的什么
+
+    问学历？专业，大学所过哪些课程，你们大学的校训，一年学费多少？
+
+    周末安排：
+
+      1.webpack搭建前端环境
+      2.项目答辩
+      3.vue复习：
+      
+          https://cn.vuejs.org/v2/guide/
+          https://vuex.vuejs.org/zh/
+          https://router.vuejs.org/zh/
+
+
+
+
+
+
+
    
 
    
